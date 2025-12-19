@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  background: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.section {
+  background: #fff;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 8px 14px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+input {
+  padding: 6px;
+  margin-right: 10px;
+}
+
+canvas {
+  border: 2px solid black;
+  background: #fff;
+}
+
+.canvas-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.export-btn {
+  background: black;
+  color: white;
+  display: block;
+  margin: 20px auto;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+label input,
+label select {
+  display: block;
+  margin-top: 4px;
+  padding: 4px;
+  width: 100%;
+}
