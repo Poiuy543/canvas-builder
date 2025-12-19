@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 const canvasRoutes = require('./routes/canvas.routes');
 
@@ -20,7 +20,7 @@ app.use(cors({
 
 
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.use('/api/canvas', canvasRoutes);
 
