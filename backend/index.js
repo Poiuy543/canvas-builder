@@ -18,7 +18,7 @@ app.use(cors({
     credentials: false
 }));
 
-app.options('/*', cors());
+
 
 app.use(bodyParser.json());
 
