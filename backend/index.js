@@ -8,8 +8,18 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: '*'
+    origin: [
+        'https://canvas-builder-frontend.onrender.com',
+        'http://localhost:3000',
+        'http://localhost:3001'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: false
 }));
+
+app.options('*', cors());
+
 app.use(bodyParser.json());
 
 app.use('/api/canvas', canvasRoutes);
