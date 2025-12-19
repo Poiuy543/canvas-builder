@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors({
     origin: [
-        'https://canvas-builder-frontend.onrender.com',
+        'https://canvas-builder-frontend-p4y0.onrender.com',
         'http://localhost:3000',
         'http://localhost:3001'
     ],
