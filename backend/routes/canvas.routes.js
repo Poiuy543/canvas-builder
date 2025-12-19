@@ -1,5 +1,5 @@
 const express = require('express');
-const { v4: uuidv4 } = require('uuid');
+const crypto = require('crypto');
 const PDFDocument = require('pdfkit');
 const { loadImage } = require('canvas');
 
@@ -21,7 +21,7 @@ router.post('/init', (req, res) => {
         return res.status(400).json({ error: 'Invalid canvas size' });
     }
 
-    const id = uuidv4();
+    const id = crypto.randomUUID();
     createNewCanvas(id, width, height);
 
     res.json({ canvasId: id });
@@ -38,7 +38,7 @@ router.post('/:id/add/rectangle', (req, res) => {
   const data = getCanvas(id);
   if (!data) return res.status(404).json({ error: 'Canvas not found' });
 
-  const elementId = uuidv4();
+  const elementId = crypto.randomUUID();
   const ctx = data.canvas.getContext('2d');
 
   ctx.beginPath();
@@ -80,7 +80,7 @@ router.post('/:id/add/circle', (req, res) => {
   const data = getCanvas(id);
   if (!data) return res.status(404).json({ error: 'Canvas not found' });
 
-  const elementId = uuidv4();
+  const elementId = crypto.randomUUID();
   const ctx = data.canvas.getContext('2d');
   ctx.beginPath();
   ctx.arc(x, y, radius, 0, 2 * Math.PI);
@@ -117,7 +117,7 @@ router.post('/:id/add/text', (req, res) => {
   const data = getCanvas(id);
   if (!data) return res.status(404).json({ error: 'Canvas not found' });
 
-  const elementId = uuidv4();
+  const elementId = crypto.randomUUID();
 
   const ctx = data.canvas.getContext('2d');
   ctx.font = `${fontSize}px ${fontFamily}`;
@@ -150,7 +150,7 @@ router.post('/:id/add/image', async (req, res) => {
   const data = getCanvas(id);
   if (!data) return res.status(404).json({ error: 'Canvas not found' });
 
-  const elementId = uuidv4();
+  const elementId = crypto.randomUUID();
 
   try {
     console.log('Fetching image:', url);
@@ -201,7 +201,7 @@ router.post('/:id/add/image/upload', upload.single('image'), async (req, res) =>
     return res.status(400).json({ error: 'No image file uploaded' });
   }
 
-  const elementId = uuidv4();
+  const elementId = crypto.randomUUID();
 
   try {
     const img = await loadImage(req.file.buffer);
